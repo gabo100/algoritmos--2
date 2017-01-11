@@ -1,0 +1,67 @@
+// nuevo.cpp : main project file.
+
+#include "stdafx.h"
+#include<iostream>
+#include<string>
+using namespace std;
+using namespace System;
+
+int main(array<System::String ^> ^args)
+{
+	string Palabra(string mes, string buscar);
+	void Desde_hasta(int inicial, int &final, string buscar,string mes);
+	string obtener_palabras_frace(int inicial, int final, string mes);
+	string texto;
+	string texto_palabra;
+	int ini,fin;
+	cout<<"de la el texto:";
+	getline(cin,texto);
+	cout<<"texto a buscar:";
+	getline(cin,texto_palabra);
+	cout<<"palabra:"<<Palabra(texto,texto_palabra);
+	Desde_hasta(ini,fin,texto_palabra,texto);
+	cout<<"Desde_hasta"<<ini<<fin<<endl;
+	cout<<"obtener palabra:"<<obtener_palabras_frace(ini,fin,texto);
+	getchar();
+	getchar();
+	
+  
+}
+
+string Palabra(string mes, string buscar)
+{
+	string pal;
+	int long_buscar=buscar.size();
+	int encontro;
+		encontro=mes.find(buscar);
+		if (encontro==-1)
+		{
+			return "";
+		}
+		else 
+		{
+			pal=mes.substr(encontro,long_buscar);
+			mes.replace(encontro,long_buscar,""); 
+			return pal;
+		};
+}
+
+void Desde_hasta(int inicial, int &final, string buscar,string mes)
+{
+	inicial=mes.find(buscar);
+	final= inicial+buscar.size()-1;
+}
+
+string obtener_palabras_frace(int inicial, int final, string mes)
+{
+	
+	string pal;
+	string aux=" ";
+	int pos;
+	pos=mes.find(aux,inicial);
+	final=mes.find(aux,pos);
+	pal=mes.substr(pos+1,final-1);
+	cout<<"inicial"<<pos<<endl;
+	cout<<"final"<<final<<endl;
+	return pal;
+}
